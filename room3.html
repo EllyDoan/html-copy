@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>eind_web4</title>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/room3.css" />
+    <style>
+      .square {
+        position: absolute;
+
+        height: 200px;
+        width: 200px;
+
+        background-color: #ffffff;
+        /* border: 3px dotted #000000; */
+
+        overflow-y: auto;
+      }
+      .square::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        content: attr(data-title);
+        text-align: center;
+        text-wrap: balance;
+        translate: -50% -50%;
+      }
+      .square .center {
+        position: relative;
+        /* margin: auto; */
+        /* width: 60%; */
+        /* border: 3px solid #73ad21; */
+        padding: 10px;
+        transition: opacity 0.25s;
+        background: #ffffff;
+        opacity: 0;
+      }
+      .square:hover .center {
+        opacity: 1;
+      }
+
+      .square#attic {
+        top: 13%;
+        left: 15%;
+        height: 10vh;
+        width: 23vw;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-up#attic {
+        top: 16.4%;
+        left: 34%;
+        width: 0;
+        height: 0;
+      }
+      .top#attic {
+        top: 9%;
+        left: 24%;
+        border-top-left-radius: 90px;
+        border-top-right-radius: 90px;
+      }
+      .square#kitchen {
+        top: 25%;
+        left: 6%;
+        height: 30vh;
+        width: 41vw;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-up#kitchen {
+        top: 48.5%;
+        left: 21%;
+        width: 0;
+        height: 0;
+      }
+      .triangle-left#kitchen {
+        top: 25%;
+        left: 43.5%;
+        width: 0;
+        height: 0;
+      }
+      .top#kitchen {
+        top: 21%;
+        left: 9%;
+        border-top-left-radius: 90px;
+        border-top-right-radius: 90px;
+      }
+      .left#kitchen1 {
+        top: 30%;
+        left: 4%;
+        border-bottom-left-radius: 90px;
+        border-top-left-radius: 90px;
+      }
+      .left#kitchen2 {
+        top: 35.5%;
+        left: 4%;
+        border-bottom-left-radius: 90px;
+        border-top-left-radius: 90px;
+      }
+      .square#hallway {
+        top: 56%;
+        left: 21%;
+        height: 10vh;
+        width: 26vw;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-up#hallway {
+        top: 59.5%;
+        left: 40%;
+        width: 0;
+        height: 0;
+      }
+      .triangle-left#hallway {
+        top: 56%;
+        left: 43.4%;
+        width: 0;
+        height: 0;
+      }
+
+      .square#fathersstudy {
+        bottom: 7%;
+        left: 21%;
+        height: 25vh;
+        width: 26vw;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .bottom#fathersstudy {
+        bottom: 3%;
+        left: 28%;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+      }
+      .bottom#fathersstudy1 {
+        bottom: 3%;
+        left: 31%;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+      }
+      .bottom#fathersstudy2 {
+        bottom: 3%;
+        left: 34%;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+      }
+      .square#parentsbedroom {
+        bottom: 7%;
+        left: 6%;
+        height: 37vh;
+        width: 14vw;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-left#parentsbedroom {
+        top: 60%;
+        left: 16.4%;
+        width: 0;
+        height: 0;
+      }
+      .bottom#parentsbedroom {
+        bottom: 3%;
+        left: 10.5%;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+      }
+
+      .square#tonsbedroom {
+        bottom: 15%;
+        right: 20%;
+        width: 20vw;
+        height: 16vh;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-down#tonsbedroom {
+        top: 69%;
+        left: 76%;
+        width: 0;
+        height: 0;
+      }
+      .bottom#tonsbedroom {
+        bottom: 11%;
+        right: 30%;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+      }
+      .bottom#tonsbedroom1 {
+        bottom: 11%;
+        right: 27%;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+      }
+
+      .square#helensroom {
+        bottom: 15%;
+        left: 48%;
+        width: 11vw;
+        height: 16vh;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-down#helensroom {
+        top: 69%;
+        left: 55%;
+        width: 0;
+        height: 0;
+      }
+      .bottom#helensroom {
+        bottom: 11%;
+        left: 51%;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+      }
+      .square#garage {
+        top: 7%;
+        right: 20%;
+        height: 16vh;
+        width: 28vw;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-down#garage {
+        top: 7%;
+        left: 55%;
+        width: 0;
+        height: 0;
+      }
+      .right#garage {
+        top: 6%;
+        right: 18%;
+        border-bottom-right-radius: 90px;
+        border-top-right-radius: 90px;
+      }
+
+      .square#livingroom {
+        top: 25%;
+        left: 48%;
+        height: 42vh;
+        width: 32vw;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-down#livingroom {
+        top: 25%;
+        left: 55%;
+        width: 0;
+        height: 0;
+      }
+      .triangle-left#livingroom {
+        top: 60%;
+        right: 20%;
+        width: 0;
+        height: 0;
+      }
+      .left#livingroom {
+        top: 35.5%;
+        left: 44.7%;
+        border-bottom-left-radius: 90px;
+        border-top-left-radius: 90px;
+      }
+
+      .square#marcelsbedroom {
+        top: 12%;
+        right: 5%;
+        height: 32vh;
+        width: 14vw;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-right#marcelsbedroom {
+        top: 37%;
+        right: 15.4%;
+        width: 0;
+        height: 0;
+      }
+      .right#marcelsbedroom {
+        top: 17%;
+        right: 3%;
+        border-bottom-right-radius: 90px;
+        border-top-right-radius: 90px;
+      }
+
+      .right#marcelsbedroom1 {
+        top: 22.5%;
+        right: 3%;
+        border-bottom-right-radius: 90px;
+        border-top-right-radius: 90px;
+      }
+
+      .square#bathroom {
+        bottom: 25%;
+        right: 5%;
+        height: 30vh;
+        width: 14vw;
+        text-align: justify;
+        word-break: break-all;
+      }
+      .triangle-down#bathroom {
+        top: 45%;
+        right: 5%;
+        width: 0;
+        height: 0;
+      }
+      .bottom#bathroom {
+        bottom: 21%;
+        right: 9.5%;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+      }
+
+      .triangle-up {
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 50px solid #000000;
+        position: absolute;
+        overflow-y: auto;
+        z-index: 1;
+      }
+      .triangle-down {
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 50px solid #000000;
+        position: absolute;
+        overflow-y: auto;
+        z-index: 1;
+      }
+      .triangle-right {
+        width: 0;
+        height: 0;
+        border-top: 25px solid transparent;
+        border-left: 50px solid #000000;
+        border-bottom: 25px solid transparent;
+        position: absolute;
+        overflow-y: auto;
+        z-index: 1;
+      }
+      .triangle-left {
+        width: 0;
+        height: 0;
+        border-top: 25px solid transparent;
+        border-right: 50px solid #000000;
+        border-bottom: 25px solid transparent;
+        position: absolute;
+        overflow-y: auto;
+        z-index: 1;
+      }
+
+      .top,
+      .right,
+      .bottom,
+      .left {
+        background-color: rgb(0, 0, 0);
+        position: absolute;
+        margin: 10px;
+        border: 1px solid black;
+        overflow-y: auto;
+        z-index: 1;
+      }
+
+      .top,
+      .bottom {
+        height: 22.5px;
+        width: 45px;
+      }
+
+      .right,
+      .left {
+        height: 45px;
+        width: 22.5px;
+      }
+      .top {
+        border-top-left-radius: 90px;
+        border-top-right-radius: 90px;
+      }
+      .right {
+        border-bottom-right-radius: 90px;
+        border-top-right-radius: 90px;
+      }
+      .bottom {
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+      }
+      .left {
+        border-bottom-left-radius: 90px;
+        border-top-left-radius: 90px;
+      }
+      .arrow {
+        width: 45px;
+        height: auto;
+        position: absolute;
+        top: 2%;
+        left: 1%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="attic" class="triangle-up"></div>
+    <div id="kitchen" class="triangle-up"></div>
+    <div id="hallway" class="triangle-up"></div>
+
+    <div id="garage" class="triangle-down"></div>
+    <div id="livingroom" class="triangle-down"></div>
+    <div id="helensroom" class="triangle-down"></div>
+    <div id="tonsbedroom" class="triangle-down"></div>
+    <div id="bathroom" class="triangle-down"></div>
+
+    <div id="marcelsbedroom" class="triangle-right"></div>
+
+    <div id="hallway" class="triangle-left"></div>
+    <div id="parentsbedroom" class="triangle-left"></div>
+    <div id="kitchen" class="triangle-left"></div>
+    <div id="livingroom" class="triangle-left"></div>
+
+    <div id="attic" class="top"></div>
+    <div id="kitchen" class="top"></div>
+
+    <div id="marcelsbedroom" class="right"></div>
+    <div id="marcelsbedroom1" class="right"></div>
+    <div id="garage" class="right"></div>
+
+    <div id="parentsbedroom" class="bottom"></div>
+    <div id="fathersstudy" class="bottom"></div>
+    <div id="fathersstudy1" class="bottom"></div>
+    <div id="fathersstudy2" class="bottom"></div>
+    <div id="helensroom" class="bottom"></div>
+    <div id="tonsbedroom" class="bottom"></div>
+    <div id="tonsbedroom1" class="bottom"></div>
+    <div id="bathroom" class="bottom"></div>
+
+    <div id="kitchen1" class="left"></div>
+    <div id="kitchen2" class="left"></div>
+    <div id="livingroom" class="left"></div>
+
+    <script type="module" src="assets/js/index.js"></script>
+
+    <div class="arrow">
+      <p>
+        <a
+          href="file:///Users/ellydoan/Documents/KABK/GD%20Y3/coding/EIND_proj/html%20copy/index.html"
+          ><img src="images/arrow.svg" alt="arrow"
+        /></a>
+      </p>
+    </div>
+
+    <div id="attic" class="square" data-title="attic">
+      <div class="center">
+        <p>
+          pocket light, second pocket light, flashlight, second flashlight,
+          extension cord, timer plug, small lamp, cover, second cover, ice
+          skates, second ice skates, third ice skates, fourth ice skates, fifth
+          ice skates, sixth ice skates, seventh ice skates, eights ice skates,
+          roller skates, key, framed priest picture, second framed priest
+          picture, Kennedy picture framed, second Kennedy picture framed, pot,
+          second pot, coffee dripper, second coffee dripper, orange plastic
+          bowls, orange plastic plates, second stack of orange plastic plates,
+          dirty cup, coffee cup, second coffee cup, stacked cups, fire tool, gas
+          bottle, portable gas stove, metal box, plastic ice pack, second
+          plastic ice pack, wooden duck toy on wheels, sun game, board game,
+          chess game, card deck, second card deck, board game, second board
+          game, third board game, fourth board game, fifth board game, sixth
+          board game, seventh board game, monopoly game, scrabble game, eights
+          board game, ninth board game, tenth board game, eleventh board game,
+          twelfth board game, thirteenth board game, fourteenth board game,
+          fifteenth board game, sixteenth board game, seventeenth board game,
+          eighteenth board game, nineteenth board game, memory game, twentieth
+          board game, twenty-first board game, twenty-second board game, second
+          memory game, mini scrabble game, map game, master mind game, dice
+          game, mikado, game, second game, third game, card game, second card
+          game, third card game, fourth card game, developing picture
+          rectangular buckets, developing picture measuring board, aquarelle
+          paint box, paper cutting machine, photo tool, photo gel, photo
+          developing equipment, second developing equipment, third developing
+          equipment, fourth developing equipment, fifth developing equipment,
+          sixth developing equipment, seventh developing equipment, eights
+          developing equipment, ninth developing equipment, tenth developing
+          equipment, eleventh developing equipment, twelfth developing
+          equipment, thirteenth developing equipment, fourteenth developing
+          equipment, fifteenth developing equipment, sixteenth developing
+          equipment, seventeenth developing equipment, eighteenth developing
+          equipment, photo paper, second photo paper, third photo paper, fourth
+          photo paper, fifth photo paper, sixth photo paper, seventh photo
+          paper, photo paper revealer, second photo paper revealer, photo
+          developing powder, second photo developing powder, third photo
+          developing powder, nineteenth developing equipment, metal photo clips,
+          second metal photo clips, tube, photo brush, photo lens, twentieth
+          developing equipment, twenty-first developing equipment, light bulb,
+          second light bulb, third light bulb, lamp, twenty-second developing
+          equipment
+        </p>
+      </div>
+    </div>
+
+    <div id="bathroom" class="square" data-title="bathroom">
+      <div class="center">
+        <p>
+          ticket, toilet plunger, toilet brush, small bin, soap, second soap,
+          third soap, fourth soap, fifth soap, sixth soap, seventh soap,
+          sunscreen, moisturiser, clay mask, foundation makeup, shower product,
+          second shower product, third shower product, fourth shower product,
+          fifth shower product, sixth shower product, seventh shower product,
+          eights shower products, ninth shower product, tenth shower product,
+          eleventh shower product, twelfth shower product, hand cream, foot
+          cream, deodorant stick, shower hat, makeup powder, second makeup
+          powder, perfume bottle, second perfume bottle, third perfume bottle,
+          fourth perfume bottle, lipstick, second lipstick, third lipstick,
+          fourth lipstick, fifth lipstick, sixth lipstick, cream box, cream,
+          second cream, third cream, vaseline, balm in round container,
+          agré-gola pills in box, plaster, plaster tape, disinfectant,
+          medication, second medication, third medication, medical thermometer,
+          second medical thermometer, third medical thermometer, fourth medical
+          thermometer, pills in box, small metal straps, pin, bandage pack,
+          second bandage pack, third bandage pack, fourth bandage pack, bandage
+          cloth, second bandage cloth, bandage tape, second bandage tape, third
+          bandage tape, fourth bandage tape, bandage fabric, second bandage
+          fabric, bandage cotton, small mirror, hand holding mirror, second hand
+          holding mirror, third hold handing mirror, tweezers, second tweezers,
+          nail brush, nail scissors, second pair of nail scissors, third pair of
+          nail scissors, fourth pair of nail scissors, nail file, second nail
+          file, third nail file, fourth nail file, fifth nail, file, sixth nail
+          file, seventh nail file, hair brush, second hair brush, third hair
+          brush, fourth hair brush, comb, second comb, third comb, fourth comb,
+          fifth comb, four hair brushes, bag of hair combs, hair clips, second
+          bunch of hair clips, third bunch of hair clips, curler, three big hair
+          clips, bunch of hair curlers, second bunch of hair curlers, third
+          bunch of hair curlers, fourth bunch of hair curlers, bathrobe, hair
+          dryer, shaving brush, second shaving brush, shaver, second shaver,
+          third shaver, shaver box, toothpaste, two toothbrushes, toothbrush,
+          head of toothbrush, two heads of toothbrush, toothpick, electric
+          toothbrush, rotten tooth, scissors, baby powder box, cleaning brush,
+          ultra white cleaning product, small rock
+        </p>
+      </div>
+    </div>
+    <div id="livingroom" class="square" data-title="livingroom">
+      <div class="center">
+        <p>
+          clock, flat clock, portable radio, second portable radio, sony sound
+          system, record player, mini record player, remote control, second
+          remote control, third record player, cd player, telephone, elly’s
+          party guide, address book, note pad, second note pad, fan paper
+          organiser, stapler, second stapler, tape, scissors, pens in jar, tiny
+          pencils, pen, second pen, third pen, sward, second sward,
+          encyclopaedia, lamp, second lamp, third lamp, candle holder, second
+          candle holder, third candle holder, fourth candle holder, fifth candle
+          holder, sixth candle holder, seventh candle holder, candle holder
+          pair, second candle holder pair, candle, second candle, third candle,
+          fourth candle, fifth candle, sixth candle, seventh candle, glass
+          candle holder, second candle holder, marble candle holder, marble
+          candle plate, big candle holder, wall candle holder, plant in pot,
+          second plant in pot, third plant in pot, fourth plant in pot, fifth
+          plant in pot, small wood table, small wood chair, plant pot, vase with
+          lid, vase, second vase, third vase, jug vase, second jug vase, ceramic
+          plant pot, ceramic tea heater pot, ceramic sugar pot, metal vase,
+          bucket, pot with handle, fourth vase, wall bowl, asian bowl, mini
+          vase, porcelain circular box, second porcelain circular box, pillow,
+          second pillow, third pillow, big round mirror with gold frame,
+          sunglasses, second pair of sunglasses, third pair of sunglasses,
+          reading glasses, second pair of reading glasses, third pair of reading
+          glasses, fourth pair of reading glasses, fifth pair of reading
+          glasses, sixth pair of reading glasses, wallet, key, asian art in
+          glass box, asian art, dried pumpkin, fake fruit, second fake fruit,
+          fake grape, second fake grape, fake pear, second fake pear, third fake
+          pear, fake apple, second fake apple, fake avocado, mini porcelain
+          vase, mini porcelain basket, second mini porcelain vase, mini clogs,
+          mini basket, mini porcelain watering can, small porcelain box, second
+          small porcelain box, third small porcelain box, fourth small porcelain
+          box, fifth small porcelain box, mini porcelain tea can, porcelain
+          figurine, second porcelain figurine, third porcelain figurine, fourth
+          porcelain figurine, fifth porcelain figurine, sixth porcelain
+          figurine, seventh porcelain figurine, eights porcelain figurine, angel
+          with guitar, jesus with cross, baby head, lizard sculpture, spinning
+          wheel, occidental dancer sculpture, monkey sculpture, bird sculpture,
+          four different weights, singular weight, second singular weight, small
+          bell, small owl, small wall candle holder, mini bowl, mini bucket,
+          mini fire pot, mini jug, mini tea pot, second mini tea pot, mini pan,
+          mini bowl with chain, mini iron, mini things, metal bowl with handles,
+          metal bell, metal jug, metal thing, mini metal couple, metal emblem,
+          metal drinking jug, second metal drinking jug, third metal drinking
+          jug, fake rose in glass bowl, bell, decorative plate, second
+          decorative plate, third decorative plate, third decorative plate,
+          fourth decorative plate, fifth decorative plate, sixth decorative
+          plate, seventh decorative plate, eights decorative plate, ninth
+          decorative plate, tenth decorative plate, eleventh decorative plate,
+          twelfth decorative plate, thirteenth decorative plate, fourteenth
+          decorative plate, fifteenth decorative plate, sixteenth decorative
+          plate, seventeenth decorative plate, framed square flower painting,
+          framed note, framed stitchings, framed picture of woman, second framed
+          picture of woman, third framed picture of woman, framed picture of man
+          and woman, second framed picture of man and woman, framed family
+          portrait, framed family picture, second framed family picture, third
+          framed family picture, fourth framed family picture, fifth framed
+          family picture, sixth framed family picture, seventh framed family
+          picture, eights framed family picture, candy glass jar, second candy
+          glass jar, third candy glass jar, ladle, cake slicer, plant scissor,
+          knife, hole maker, butter knife, second butter knife, four big knives,
+          two butter knives, five bread knives, meat fork, second meat fork,
+          third meat fork, three spoons, small spoons, spoons in porcelain jar,
+          spoon, second spoon, third spoon, fourth spoon, fifth spoon, sixth
+          spoon, seventh spoon, eights spoon, decorative small spoons, bunch of
+          small spoons, spoons in box, forks in box, forks and spoons in box,
+          knife forks in box, second spoons in box, nut cracker tool, beer
+          opener, second beer opener, ceramic oven recipient, metal tray, second
+          metal tray, metal bowl, metal plate, second metal plate, third metal
+          tray, fourth metal tray, wooden bowl, second wooden bowl, third wood
+          bowl, wood plate, wooden bowl with small wooden bowls inside and
+          spoon, metal bowl with small metal plates inside, coffee grinder, cake
+          server, second cake server, porcelain plate with handle, cutlery in
+          jar, forks in jar, cake plate shelf, porcelain flower bowl, second
+          porcelain flower bowl, plate, second plate, third plate, stack of
+          plates, bowl, second bowl, second stack of plates, third stack of
+          plates, fourth stack of plates, fifth stack of plates, sixth stack of
+          plates, seventh stack of plates, eights stack of plates, ninth stack
+          of plates, tenth stack of plates, eleventh stack of plates, twelfth
+          stack of plates, fourth plate, fifth plate, sixth plate, seventh
+          plate, two rectangular plates, eights plate, ninth plate, metal fruit
+          bowl, metal flower bowl, second metal fruit bowl, metal and glass
+          bowl, glass container, metal leaf bowl, metal bucket with lid,
+          porcelain plate with lid, porcelain sugar pt, porcelain milk jug,
+          porcelain tea pot, porcelain soup set, second porcelain soup set, cup,
+          second cup third cup, fourth cup, fifth cup, sixth cup, seventh cup,
+          eights cup, ninth cup, tenth cup, eleventh cup, twelfth cup,
+          thirteenth cup, fourteenth cup, fifteenth cup, sixteenth cup,
+          seventeenth cup, eighteenth cup, twentieth cup, twenty-first cup,
+          twenty-second cup, twenty-third cup, twenty-fourth cup, twenty-fifth
+          cup, twenty-sixth cup, twenty-seventh cup, twenty-eights cup,
+          twenty-ninth cup, thirties cup, thirty-first cup, thirty-second cup,
+          thirty-third cup, thirty-fourth cup, thirty-fifth cup, thirty-sixth
+          cup, thirty-seventh cup, thirty-eights cup, thirty-ninth cup, fortieth
+          cup, forty-first cup, forty-second cup, two porcelain soup bowls,
+          three porcelain tea cups, two porcelain tea cups, four porcelain tea
+          cups, tea set, porcelain flower tea pot, metal tea pot, porcelain salt
+          and pepper set, oriental spoons and bowls, crystal carafe, second
+          crystal carafe, crystal salt and pepper set, glass table set, second
+          glass table set, crystal jar, second crystal jar, crystal sugar jar
+          with spoon, three crystal glasses, two glasses, six glasses, four
+          glasses, five stem crystal glasses, six stem crystal glasses, two stem
+          glasses, two glasses, glass, second glass, ashtray, second ashtray,
+          third ashtray, fourth ashtray, fifth ashtray, sixth ashtray, seventh
+          ashtray, stack of small glass plates, crystal glass, second crystal
+          glass, third crystal glass, fourth crystal glass, fifth crystal glass,
+          sixth crystal glass, seventh crystal glass, eights crystal glass,
+          ninth crystal glass, napkin holder, second napkin holder, third napkin
+          holder, napkin ring, second napkin ring, third napkin ring, fourth
+          napkin ring, fifth napkin ring, sixth napkin ring, seventh napkin
+          ring, eights napkin ring, coasters, three coasters, coaster, box of
+          coasters, lighter, second lighter, third lighter, fourth lighter,
+          fifth lighter, cigarette box, ashtray, second ashtray, third ashtray,
+          fourth ashtray, fifth ashtray, cigar box, second cigar box, third
+          cigar box, fourth cigar box, fifth cigar box, sixth cigar box, seventh
+          cigar box, eights cigar box, cookie box, second cookie box, third
+          cookie box, fourth cookie box, metal box, second metal box, third
+          metal box, fourth metal box, fifth metal box, sixth metal box, seventh
+          metal box, eights metal box, ninth metal box, tenth metal box,
+          eleventh metal box, tea box, second tea box, third tea box, cleaning
+          shovel with brush, metal rack with feet, green watering can, measuring
+          band, tiny house, second tiny house, third tiny house, fourth tiny
+          house, fifth tiny house, sixth tiny house, seventh tiny house, eights
+          tiny house, ninth tiny house, case, three cases, vinyl, second vinyl,
+          third vinyl, fourth vinyl, fifth vinyl, sixth vinyl, seventh vinyl,
+          eights vinyl, ninth vinyl, tenth vinyl, eleventh vinyl, twelfth vinyl,
+          thirteenth vinyl, fourteenth vinyl, fifteenth vinyl, sixteenth vinyl,
+          seventeenth vinyl, eighteenth vinyl, nineteenth vinyl, twentieth
+          vinyl, twenty-first vinyl, twenty-second vinyl, twenty-third vinyl,
+          twenty-fourth vinyl, twenty-fifth vinyl, twenty-sixth vinyl,
+          twenty-seventh vinyl, twenty-eights vinyl, twenty-ninth vinyl,
+          thirtieth vinyl, thirty-first vinyl, thirty-second vinyl, thirty-third
+          vinyl, thirty-fourth vinyl, thirty-fifth vinyl, thirty-sixth vinyl,
+          thirty-seventh vinyl, thirty-eights vinyl, thirty-ninth vinyl,
+          fortieth vinyl, forty-second vinyl, forty-third vinyl, forty-fourth
+          vinyl, forty-fifth vinyl, forty-sixth vinyl
+        </p>
+      </div>
+    </div>
+
+    <!-- </div>
+    <div id="fathersstudy" class="square" data-title="fathersstudy">
+      <div class="center">
+        <p>
+          alarm clock, thermometer, quartz alarm, sort of recorder, remote control, front desk book, second front desk book, three front desk books, four calendars, party guide, second party guide, third party guide, passport looking booklet, document booklet, farmer’s loan bank document, address book, small books containing business cards, notebook, second notebook, alphabetised papers, bunch of papers, third notebook, folder, second folder, third folder, fourth folder, fifth folder, sixth folder, seventh folder, eights folder, bunch of folders, second bunch of folders, ninth folder, photo album, second photo album, third photo album, fourth photo album, fifth photo album, sixth photo album, seventh photo album, eights photo album, ninth photo album, tenth photo album, eleventh photo album, twelves photo album, thirteenth photo album, fourteenth photo album, fifteenth photo album, sixteenth photo album, seventeenth photo album, eighteenth photo album, nineteenth photo album, tenth folder, eleventh folder, twelves folder, thirteenth folder, fourteenth folder, fifteenth folder, sixteenth folder, seventeenth folder, eighteenth folder, nineteenth folder, twentieth folder, book, second book, scrapbook,  third book, fourth book, fifth book, sixth book, seventh book, national sport album, second sport album, third sport album, small book, philips razor manual, electricity safety manual, camera manual, first aid manual, alarm manual, notepad, bunch of paper sheets, second bunch of paper sheets, third bunch of paper sheets, stapler, second stapler, tape, hole puncher, bunch of desk essentials in blue container, pen container, atlanta writing cards, system cards, bunch of metal folder holders, second bunch of metal folder holders, liquid glue, staple box, button box, pencil, second pencil, two transparent triangle rulers, plastic ruler, pen, black fine liner, second pen, syringe pen, sward, second sward, calculator, franco laurenti pen set, container, bunch of postcards, christmas card box, administration document, second administration document, third administration document, fourth administration document, fifth administration document, ticket, written note, new rates note, second ticket, third ticket, bank card, second bank card, third bank card, fourth bank card, paper with text, bill, second bill, bank letter, written pages, book with written letters, cardboard box with handwritten note on top, bunch of old books, second bunch of old books, dutch caste foundation books, dictionary, etymological dictionary, second etymological dictionary, third etymological dictionary, random book, joke pocket book, language treasure book, second language treasure book, third language treasure book, fourth language treasure book, kids book, book on flowers, second book on flowers, third book on flowers, fourth book on flowers, fifth book on flowers, sixth book on flowers, book on billiard, second book on billiard, third book on billiard, book, second book, third book, fourth book, book on Willem Alexander and Maxima, magazine, second magazine, booklet, fifth book, sixth book, seventh book, eights book, ninth book, tenth book, eleventh book, twelfth book, thirteenth book, fourteenth book, fifteenth book, sixteenth book, seventeenth book, eighteenth book, nineteenth book, twentieth book, twenty first book, twenty second book, twenty third book, twenty fourth book, twenty fifth book, twenty sixth book, twenty seventh book, twenty eights book, twenty ninth book, thirtieth book, thirty-first book, thirty-second book, thirty-third book, thirty-fourth book, thirty-fifth book, thirty-sixth book, thirty-seventh book, thirty-eights book, thirty-ninth book, fortieth book, forty-first book, forty-second book, forty-third book, forty-fourth book, forty-fifth book, forty-sixth book, forty-seventh book, forty-eights book, forty-ninth book, fiftieth book, fifty-first book, fifty-second book, fifty-third book, fifty-fourth book, fifty-fifth book, fifty-sixth book, fifty-seventh book, small lamp, flashlight, plug, two candles, glass candle recipient, comb, sun glasses, reading glasses, second pair of reading glasses, third pair of reading glasses, fourth pair of reading glasses, fifth pair of reading glasses, wallet, second wallet, keychain, whistle blower, second keychain, key, pair of keys, second pair of keys, bunch of keys, second bunch of keys, name tag, Beatrix tile, asian frame with birds, painted portrait woman, painted portrait man, picture framed man, picture of man, bunch of portrait photos small, two kids picture framed, second two kids picture framed, picture of group of people framed, second picture of group of people framed, chopsticks, pair of coasters, ashtray with coins inside, second ashtray, cigar box, small box, second small box, box, second box, third box, fourth box, fifth box, bin, swiss knife, pocket knife, ball, second ball, third ball, billiard cue chalk, trophy, second trophy, third trophy, fourth trophy, fifth trophy, sixth trophy, seventh trophy, eights trophy, ninth trophy, medal, second medal, card game set, game bag with dices, portable telescope, binoculars, camera, second camera, camera bag, second camera bag, box of negative film, second box of negative film, rolled up film, camera flash, magnifying glass
+        </p>
+      </div>
+    </div> -->
+
+    <div id="garage" class="square" data-title="garage">
+      <div class="center">
+        <p>
+          random package, plug, extension cord, plant pot, second plant pot,
+          third plant pot, fourth plant pot, fifth plant pot, sixth plant pot,
+          seventh plant pot, eights plant pot, dirty cloth, clogs, rubber boots,
+          second pair of rubber boots, plastic shopping bag, keys, empty bottle,
+          chocolate box, circular box, second circular box, third circular box,
+          fourth circular box, big box, pillow hitter, small brush, dirty
+          sponge, cleaning product, bucket, second bucket, screw, second screw,
+          third screw, fourth screw, fifth screw, sixth screw, seventh screw,
+          eights screw, ninth screw, tenth screw, eleventh screw, twelfth screw,
+          thirteenth screw, fourteenth screw, fifteenth screw, sixteenth screw,
+          seventeenth screw, eighteenth screw, screw box, second screw box,
+          third screw box, fourth screw box, fifth screw box, sixth screw box,
+          screwdriver, second screwdriver, third screwdriver, pliers, second
+          pair of pliers, wrenches, hammer, second hammer, third hammer, fourth
+          hammer, hand saw, second hand saw, third hand saw, fourth hand saw,
+          measuring tool, second measuring tool, axe, drill, wood tool,
+          gardening tool, second gardening tool, third gardening tool, broom,
+          shovel, gardening fork, garden watering tube, rake, blue tool
+          organiser, wood block, metal wheel carrier, second metal wheel
+          carrier, licence plate, car tools, tire spanner, box-end wrench, car
+          thing, second car thing, third car thing, car cord, cord, fourth car
+          thing, work clothes, second work clothes, car paper, second car paper,
+          third car paper, fourth car paper, fifth car paper, sixth car paper,
+          seventh car paper, bow, second box, window car scraper, second window
+          car scraper, light with cord, second light with cord, box for light
+          bulb, second box for light bulb, bike repair small box, bike oil, bike
+          vaseline, dynamo, bike pump, towel, cloth, hockey stick, second hockey
+          stick, third hockey stick, football
+        </p>
+      </div>
+    </div>
+
+    <div id="helensroom" class="square" data-title="helensroom">
+      <div class="center">
+        <p>
+          portable clock, children’s book, second children’s book, third
+          children’s book, fourth children’s book, fifth children’s book, sixth
+          children’s book, seventh children’s book, eights children’s book,
+          ninth children’s book, tenth children’s book, eleventh children’s
+          book, twelfth children’s book, thirteenth children’s book, fourteenth
+          children’s book, fifteenth children’s book, sixteenth children’s book,
+          seventeenth children’s book, eighteenth children’s book, nineteenth
+          children’s book, twentieth children’s book, twenty-first children’s
+          book, twenty-second children’s book, twenty-third children’s book,
+          twenty-fourth children’s book, twenty-fifth children’s book,
+          twenty-sixth children’s book, twenty-seventh children’s book,
+          twenty-eights children’s book, twenty-ninth children’s book, thirtieth
+          children’s book, thirty-first children’s book, thirty-second
+          children’s book, thirty-third children’s book, thirty-fourth
+          children’s book, thirty-fifth children’s book, decorative table cloth,
+          second decorative table cloth, long rain jacket, small ceramic angel
+          figurine, tea set, three dollhouse trees, doll, second doll, third
+          doll, fourth doll, fifth doll, sixth doll, seventh doll, bunny toy,
+          elephant toy
+        </p>
+      </div>
+    </div>
+
+    <div id="hallway" class="square" data-title="hallway">
+      <div class="center">
+        <p>
+          wall clock, wall clock with thermometer, bunch of little things,
+          ticket, small lamp, second small lamp, light bulb box, second light
+          bulb box, third light bulb box, fourth light bulb box, fifth light
+          bulb box, light bulb, plug, extension cord, second extension cord,
+          third extension cor, fourth extension cord, timer plug, marble candle
+          holders, glass candle holders, vase, second vase, pot, second pot,
+          third pot, flower pot, second flower pot, third flower pot, fourth
+          flower pot, fifth flower pot, sixth flower pot, seventh flower pot,
+          eights flower pot, ninth flower pot, tenth flower pot, eleventh flower
+          pot, twelfth flower pot, third vase, fourth vase, fifth vase, bowl of
+          flowers, metal container, two towels, scale, toilet paper on stick,
+          toilet brush, mirror, plate, hair brush, comb, fur scarf, cloves,
+          second pair of gloves, third pair of gloves, scarf, second scarf,
+          third scarf, hat, second hat, sunglasses, second pair of sunglasses,
+          shoe slider, shoe brush, second shoe brush, third shoe, fourth shoe
+          brush, fifth shoe brush, shoe brush box, wallet, second wallet, third
+          wallet, fourth wallet, office bag, fifth wallet, umbrella, second
+          umbrella, third umbrella, fourth umbrella, fifth umbrella, sixth
+          umbrella, umbrella bucket, key chain, key cleaner, key, keys, name
+          plate, frame bird tile, brush, vacuum cleaner brush, second vacuum
+          cleaner brush, third vacuum cleaner brush, bike cord, metal water
+          bottle, second metal water bottle, tennis racket in pouch, tennis
+          ball, second tennis ball, hockey ball, three badminton ball, jar with
+          marbles
+        </p>
+      </div>
+    </div>
+
+    <div id="kitchen" class="square" data-title="kitchen">
+      <div class="center">
+        <p>
+          cooking guide, second cooking guide, pin box, ticket, cooking book,
+          book, second book, plug, second plug, third plug, fourth plug, fifth
+          plug, pile of towels, second pile of towels, third pile of towels,
+          fourth pile of towels, dirty cloth, second dirty cloth, third dirty
+          cloth, basket of dirty towels, textile wipe, role of toilet paper,
+          soap bottle, soap, second soap bottle, hand brush, laces, tangled
+          laces, shoe helper, shoe cream, second shoe cream, third shoe cream,
+          fourth shoe cream, fifth shoe cream, sixth shoe cream, seventh shoe
+          cream, eights shoe cream, ninth shoe cream, tenth shoe cream, eleventh
+          shoe cream, twelfth shoe cream, thirteenth shoe cream, keys, second
+          pair of keys, third pair of keys, fourth pair of keys, portable spice
+          shelf, second portable spice shelf, pan, second pan, third pan, fourth
+          pan, fifth pan, casserole, second casserole, third casserole, fourth
+          casserole, fifth casserole, sixth casserole, seventh casserole, wooden
+          spoon, second wooden spoon, mesh skimmer, ladle, spatula, second
+          spatula, carving fork, spoon, second spoon, salad forks, ice cream
+          scooper, two scissors, knife and knife sharpener, kitchen rolling
+          tool, small knife, fruit knife, butter knives, forks, second bunch of
+          forks, bunch of spoons, second bunch of spoons, bunch of spoons and
+          forks, metal cutlery holders, can opener, second can opener, third can
+          opener, bottle opener, second bottle opener, third bottle opener,
+          cheese slicer, mini grater, peeler, second peeler, corkscrew, lemon
+          squeezer, second lemon squeezer, egg slicer, second egg slicer,
+          grater, garlic press, second garlic press, strainer, second strainer,
+          third strainer, colander, oven dish, bread basket, metal tray, second
+          metal tray, third metal tray, fourth metal tray, flower metal tray,
+          round wood cutting board, wood cutting board, second wood cutting
+          board, coffee jug, tea jug, measuring cup, water jug, second water
+          jug, hand mixer, whisk, second hand mixer, metal tea pot, second tea
+          pot, third tea pot, coffee measuring spoon, metal coffee dripper,
+          metal milk-frothing jug, second metal milk-frothing jug, metal sugar
+          container, second metal sugar container, stacked orange bowls, second
+          stack of multicolour bowls, stacked plastic cups, porcelain plates,
+          bowl, second bowl, stack of plates, flower bowl with handle, second
+          flower bowl with handle, third flower bowl with handle, two stacked
+          bowls with handle, stacked bowls and plates, metal bowl, second metal
+          bowl, third metal bowl, metal sauce jug, tea cup, second tea cup,
+          third tea cup, crystal bowl, second crystal bowl, third crystal bowl,
+          glass bowl, second glass bowl, stacked glass bowls second stacked
+          glass bowls, yellow bowl, three glasses, second three glasses, two
+          glasses, second two glasses, five glasses, six glasses, two glass tea
+          cups, four glass tea cups, three glasses with fruit drawing, three
+          wine glasses, second three wine glasses, six wine glasses, third three
+          wine glasses, fourth three wine glasses, stacked champagne glasses,
+          wine glass, sonnema stem glass, glass, second glass, third glass,
+          fourth glass, fifth glass, sixth glass, seventh glass, eights glass,
+          ninth glass, tenth glass, eleventh glass, twelfth glass, thirteenth
+          glass, fourteenth glass, fifteenth glass, sixteenth glass, seventeenth
+          glass, crystal plater, coasters, metal pot holder with legs, match
+          box, lighter, second lighter, ashtray, second ashtray, third ashtray,
+          fourth ashtray, cookie box, second cookie box, rope, bowl of yarn,
+          bunch of ropes, small metal clamps, laundry clamps, laundry basket,
+          second laundry basket, metal dustpan and brush, second metal dustpan
+          and brush, cleaning brush, second cleaning brush, third cleaning
+          brush, fourth cleaning brush, fifth cleaning brush, sixth cleaning
+          brush, seventh cleaning brush, eights cleaning brush, dust brush,
+          plastic bucket with sponge and cloths, used sponge, second used
+          sponge, third used sponge, cleaning bucket with cloth, cleaning
+          plastic rectangular bucket, window wiper, dish brush, fly swatter,
+          second fly swatter, cleaning product, second cleaning product, third
+          cleaning product, fourth cleaning product, fifth cleaning product,
+          sixth cleaning product, cleaning product basket holder, aluminium
+          foil, trash bin bags, pocket knife, second pocket knife, screwdriver,
+          second screwdriver, pliers, second pliers, third pliers, monkey
+          wrench, double sided wrench, hammer, handsaw, triangle paint scraper,
+          sanding tool, paint brush, gardening fork, pruners, second pruners,
+          third pruners, fourth pruners, simson glue, metal bike tool, bicycle
+          oil
+        </p>
+      </div>
+    </div>
+
+    <div id="marcelsbedroom" class="square" data-title="marcelsbedroom">
+      <div class="center">
+        <p>
+          clock, radio, second radio, stapler, colour pencils, second box of
+          colour pencils, children’s book, second children’s book, third
+          children’s book, fourth children’s book, fifth children’s book, sixth
+          children’s book, seventh children’s book, eights children’s book,
+          ninth children’s book, tenth children’s book, eleventh children’s
+          book, twelfth children’s book, thirteenth children’s book, fourteenth
+          children’s book, fifteenth children’s book, sixteenth children’s book,
+          seventeenth children’s book, eighteenth children’s book, nineteenth
+          children’s book, twentieth children’s book, twenty-first children’s
+          book, twenty-second children’s book, twenty-third children’s book,
+          twenty-fourth children’s book, twenty-fifth children’s book,
+          twenty-sixth children’s book, twenty-seventh children’s book,
+          twenty-eights children’s book, twenty-ninth children’s book, thirtieth
+          children’s book, thirty-first children’s book, thirty-second
+          children’s book, thirty-third children’s book, thirty-fourth
+          children’s book, thirty-fifth children’s book, thirty-sixth children’s
+          book, thirty-seventh children’s book, thirty-eights children’s book,
+          thirty-ninth children’s book, forty-first children’s book,
+          forty-second children’s book, forty-third children’s book,
+          forty-fourth children’s book, desk lamp, hat, reading glasses, second
+          pair of reading glasses, key, keys, wrench, train toy, second train
+          toy, second train toy, third train toy, fourth train toy, fifth train
+          toy, truck toy, second truck toy, children’s blocks, smurf toy, second
+          smurf toy, two soldier toys, little figurine, second figurine, third
+          figurine, fourth figurine, fifth figurine, sixth figurine, seventh
+          figurine, eights figurine, ninth figurine, tenth figurine, horse toy,
+          second horse toy, third horse toy, fourth horse toy, fifth horse toy,
+          sheep toy, second sheep toy, third sheep toy, bear toy, second bear
+          toy, cow toy, second cow toy, bunch of horse raising toys, bunch of
+          soldier toys, farm animal toy, second farm animal toy, third farm
+          animal toy, fourth farm animal toy, fifth farm animal toy, sixth farm
+          animal toy, seventh farm animal toy, eights farm animal toy, ninth
+          farm animal toy, toy plants, toy trees, wooden game, whistle, second
+          whistle, toy, guitar, harmonica, second harmonica, third harmonica
+        </p>
+      </div>
+    </div>
+
+    <div id="parentsbedroom" class="square" data-title="parentsbedroom">
+      <div class="center">
+        <p>
+          alarm clock, second alarm clock, third alarm clock, wooden wall clock,
+          principal clock, phone, receipt, plug, small wooden table, vase,
+          second vase, broken vase, floral table set, second floral table set,
+          third floral table set, fourth floral table set, fifth floral table
+          set, sixth floral table set, seventh floral table set, eighth floral
+          table set, ninth table set, tenth table set, eleventh table set,
+          twelfth table set, table set pair, second table set pair, third table
+          set pair, bed cover, second bed cover, third bed cover, carpet, second
+          carpet, bunch of face towels, bunch of white towels, bunch of yellow
+          towels, bunch of colourful towels, bunch of other towels, floral
+          yellow towel, green towel, bunch of hand towels, second bunch of hand
+          towels, set of fruity kitchen gloves, bunch of towels, second bunch of
+          towels, third bunch of towels, fourth bunch of towels, feeding towel
+          baby, second feeding towel baby, sort of floral cover, second sort of
+          floral cover, sort of cover, third sort floral cover, second sort of
+          cover, third sort of cover, fourth sort of cover, fifth sort of cover,
+          sixth sort of cover, seventh sort of cover, bunch of white covers,
+          second bunch of white covers, third bunch of white covers, bed cover
+          set, second bed cover set, third bed cover set, bunch of bed covers,
+          fourth bed cover set, fifth bed cover set, sixth bed cover set, soap,
+          kemt product, makeup powder with mirror, empty chanel number five eau
+          de toilette, perfume, empty perfume, set with hair brush, comb, nail
+          brush, toiletry set in bag, second toiletry set in bag, third toiletry
+          set in bag, razor set, retainer, second retainer, fake teeth, trench
+          coat, second trench coat, third trench coat, fourth trench coat, suit,
+          second suit, third suit, fourth suit, fifth suit, sixth suit, jacket,
+          second jacket, fur coat, fifth trench coat, bunch of hangers, second
+          bunch of hangers, leather gloves, second pair of leather gloves,
+          scarf, bunch of scarves, headband, pants, second pants with belt,
+          second pants with belt, third pants with belt, fourth pants with belt,
+          fifth pants with belt, sixth pants with belt, seventh pants with belt,
+          eights pants with belt, ninth pants with belt, tenth pants with belt,
+          eleventh pants with belt, twelves pants with belt, thirteenth pants
+          with belt, fourteenth pants with belt, fifteenth pants with belt,
+          sixteenth pants with belt, seventeenth pants with belt, eighteenth
+          pants with belt, pullover, second pullover, third pullover, fourth
+          pullover, fifth pullover, eights pullover, ninth pullover, tenth
+          pullover, bunch of white shirts, second bunch of white shirts, bunch
+          of white underwear, second bunch of underwear, bunch of striped
+          shirts, bunch of striped t-shirts, bunch of t-shirts, sunglasses,
+          reading glasses, tie, second tie, third tie, fourth tie, fifth tie,
+          sixth tie, seventh tie, eights tie, seventh tie, eights tie, ninth
+          tie, tenth tie, eleventh tie, twelves tie, thirteenth tie, fourteenth
+          tie, fifteenth tie, sixteenth tie, seventeenth tie, eighteenth tie,
+          ninetieth tie, twentieth tie, twenty-first tie, twenty-second tie,
+          twenty-third tie, twenty-fourth tie, twenty-fifth tie, twenty-sixth
+          tie, twenty-seventh tie, twenty-eights tie, twenty-ninth tie,
+          thirtieth tie, thirty-second tie, thirty-third tie, thirty-fourth tie,
+          thirty-fifth tie, heels, loafers, shoes, second pair of shoes, third
+          pair of shoes, slippers, shoe shaper, second shoe shaper, third shoe
+          shaper, fourth shoe shaper, fifth shaper, sixth shoe shaper, seventh
+          shoe shaper, pair of shoe brushes, belt, second belt, third belt,
+          fourth belt, fifth belt, sixth belt, seventh belt, eights belt, tenth
+          belt, eleventh belt, twelves belt, thirteenth belt, fourteenth belt,
+          fifteenth belt, sixteenth belt, handbag, second handbag, third
+          handbag, fourth handbag, fifth handbag, sixth handbag, seventh
+          handbag, eights handbag, ninth handbag, tenth handbag, eleventh
+          handbag, wallet, second wallet, third wallet, key, porcelain wall
+          hanger, second porcelain wall hanger, porcelain cat figurine, second
+          porcelain cat figurine, porcelain duck figurine, man with owl ceramic
+          book holder, ceramic half naked woman on lounge chair, plate with
+          floral decor, plate with bird decor, second plate with bird decor,
+          third plate with bird decor, framed flower painting, beer opener,
+          ceramic milk recipient, recatnglular ceramic casserole, ceramic bowl,
+          cigar box, ring box, small bow, second small box, third small box,
+          small brush, second small brush, third small brush, plastic bin, three
+          needles, needle set, second pair of three needles, circular box
+          containing needles, needle set pouch, tiny hole puncher for fabric,
+          some sewing tool, knitting needles with container
+        </p>
+      </div>
+    </div>
+
+    <div id="tonsbedroom" class="square" data-title="tonsbedroom">
+      <div class="center">
+        <p>
+          alarm clock, watch, second watch, third watch, fourth watch, radio,
+          second radio, small speaker, microphone, car papers, second car
+          papers, folder, notebook, second notebook, third notebook, fourth
+          notebook, fifth notebook, sixth notebook, seventh notebook, eights
+          notebook, ninth notebook, instruction booklet, second instruction
+          booklet, stapler, tape, hole pusher, plastic pen container, wall pins,
+          eraser, second eraser, pen sharpener, second pen sharpener, compass,
+          triangle ruler, ink bottle, second ink bottle, third ink bottle, metal
+          pen tips in box, drawing ink, lettering set, pen kit, pencil box,
+          pencils, coloured pencils in bag, crayons, fountain pen box, marker,
+          paint box, drawing box, pen, second pen, third pen, fourth pen, fifth
+          pen, sixth pen, seventh pen, eights pen, ninth pen, ink cartridge,
+          calculator, fountain pen box, ticket, second ticket, third ticket,
+          fourth ticket, fifth ticket, sixth ticket, seventh ticket, two
+          dictionaries, dutch history books, two books, children’s book, second
+          children’s book, third children’s book, fourth children’s book, fifth
+          children’s book, sixth children’s book, seventh children’s book,
+          eights children’s book, ninth children’s book, tenth children’s book,
+          eleventh children’s book, twelfth children’s book, thirteenth
+          children’s book, fourteenth children’s book, fifteenth children’s
+          book, sixteenth children’s book, seventeenth children’s book,
+          eighteenth children’s book, nineteenth children’s book, twentieth
+          children’s book, twenty-first children’s book, twenty-second
+          children’s book, twenty-third children’s book, twenty-fourth
+          children’s book, twenty-fifth children’s book, twenty-sixth children’s
+          book, twenty-seventh children’s book, twenty-eights children’s book,
+          twenty-ninth children’s book, thirtieth children’s book, thirty-first
+          children’s book, thirty-second children’s book, thirty-third
+          children’s book, thirty-fourth children’s book, thirty-fifth
+          children’s book, thirty-sixth children’s book, thirty-seventh
+          children’s book, thirty-eights children’s book, thirty-ninth
+          children’s book, fortieth children’s book, forty-first children’s
+          book, forty-second children’s book, forty-third children’s book,
+          forty-fourth children’s book, forty-fifth children’s book, forty-sixth
+          children’s book, forty-seventh children’s book, forty-eights
+          children’s book, forty-ninth children’s book, fiftieth children’s
+          book, fifty-second children’s book, fifty-third children’s book,
+          fifty-fourth children’s book, fifty-fifth children’s book, fifty-sixth
+          children’s book, fifty-seventh children’s book, fifty-eights
+          children’s book, fifty-ninth children’s book, sixtieth children’s
+          book, sixty-first children’s book, sixty-second children’s book,
+          sixty-third children’s book, desk lamp, pocket light, second pocket
+          light, oil lamp, oil candle, vase, soap, comb, razor, tooth, hat,
+          second hat, reading glasses, wood feet, bag, wallet, second wallet,
+          third wallet, whistle, cow key chain, empty bottle, second empty
+          bottle, name tag, house number fifty-six, religious painting framed,
+          abstract art tile, dutch lion tile, angel illustration framed,
+          religious art framed, coffee grinder, ashtray, second ashtray, box,
+          second box, third box, fourth box, fifth box, sixth box, metal box,
+          pocket knife, second pocket knife, third pocket knife, fourth pocket
+          knife, fifth pocket knife, two saws, four wood carving tools, three
+          pliers, tool box, hockey flag, high school flag, medal, pin, second
+          pin, third pin, car toy, second car toy, third car toy, fourth car
+          toy, fifth car toy, sixth car toy, seventh car toy, eights car toy,
+          ninth car toy, tenth car toy, eleventh car toy, twelfth car toy,
+          thirteenth car toy, fourteenth car toy, fifteenth car toy, sixteenth
+          car toy, seventeenth car toy, eighteenth car toy, nineteenth car toy,
+          twentieth car toy, twenty-first car toy, twenty-second car toy,
+          twenty-third car toy, motor cyclist toy, plane toy, second plane toy,
+          third plane toy, fourth plane toy, car garage toy, miniature house,
+          second miniature house, third miniature house, fourth miniature house,
+          fifth miniature house, sixth miniature house, seventh miniature house,
+          eights miniature house, ninth miniature house, tenth miniature house,
+          eleventh miniature house, twelfth miniature house, thirteenth
+          miniature house, fourteenth miniature house, fifteenth miniature
+          house, sixteenth miniature house, seventeenth miniature house,
+          eighteenth miniature house, nineteenth miniature house, twentieth
+          miniature house, twenty-first miniature house, train toy, second train
+          toy, third train toy, fourth train toy, train tracks toy, second train
+          tracks toy, third train tracks toy, fourth train tracks toy, toy
+          bridge, second toy bridge, toy blocks, piggy bank, money box, football
+          book, electric game, small game, second triangular game, toy gun,
+          kaleidoscope, small piece, scrabble game, cassette, second cassette,
+          third cassette, fourth cassette, fifth cassettes, sixth cassette,
+          seventh cassette, vinyl, shark teeth, sea snail shells, second sea
+          snail shells, bullet, second bullet, two bullets, four bullets, shell,
+          second shell, third shell, fourth shell, rock, second rock, third
+          rock, box of rocks, fishing sticks, second fishing sticks, third
+          fishing sticks, fishing rod, second fishing rod, fishing hook, second
+          fishing hook, third fishing hook, fishing box, fourth fishing hook,
+          fifth fishing hook, fishing balloon, second fishing balloon, third
+          fishing balloon, binoculars, camera, second camera, third camera,
+          magnifying glass, second magnifying glass, third magnifying glass,
+          developing powder, film roll, two unused film roll, camera batteries,
+          microscope
+        </p>
+      </div>
+    </div>
+
+    <div id="fathersstudy" class="square" data-title="fathersstudy">
+      <div class="center">
+        <p>
+          alarm clock, thermometer, quartz alarm, sort of recorder, remote
+          control, front desk book, second front desk book, three front desk
+          books, four calendars, party guide, second party guide, third party
+          guide, passport looking booklet, document booklet, farmer’s loan bank
+          document, address book, small books containing business cards,
+          notebook, second notebook, alphabetised papers, bunch of papers, third
+          notebook, folder, second folder, third folder, fourth folder, fifth
+          folder, sixth folder, seventh folder, eights folder, bunch of folders,
+          second bunch of folders, ninth folder, photo album, second photo
+          album, third photo album, fourth photo album, fifth photo album, sixth
+          photo album, seventh photo album, eights photo album, ninth photo
+          album, tenth photo album, eleventh photo album, twelves photo album,
+          thirteenth photo album, fourteenth photo album, fifteenth photo album,
+          sixteenth photo album, seventeenth photo album, eighteenth photo
+          album, nineteenth photo album, tenth folder, eleventh folder, twelves
+          folder, thirteenth folder, fourteenth folder, fifteenth folder,
+          sixteenth folder, seventeenth folder, eighteenth folder, nineteenth
+          folder, twentieth folder, book, second book, scrapbook, third book,
+          fourth book, fifth book, sixth book, seventh book, national sport
+          album, second sport album, third sport album, small book, philips
+          razor manual, electricity safety manual, camera manual, first aid
+          manual, alarm manual, notepad, bunch of paper sheets, second bunch of
+          paper sheets, third bunch of paper sheets, stapler, second stapler,
+          tape, hole puncher, bunch of desk essentials in blue container, pen
+          container, atlanta writing cards, system cards, bunch of metal folder
+          holders, second bunch of metal folder holders, liquid glue, staple
+          box, button box, pencil, second pencil, two transparent triangle
+          rulers, plastic ruler, pen, black fine liner, second pen, syringe pen,
+          sward, second sward, calculator, franco laurenti pen set, container,
+          bunch of postcards, christmas card box, administration document,
+          second administration document, third administration document, fourth
+          administration document, fifth administration document, ticket,
+          written note, new rates note, second ticket, third ticket, bank card,
+          second bank card, third bank card, fourth bank card, paper with text,
+          bill, second bill, bank letter, written pages, book with written
+          letters, cardboard box with handwritten note on top, bunch of old
+          books, second bunch of old books, dutch caste foundation books,
+          dictionary, etymological dictionary, second etymological dictionary,
+          third etymological dictionary, random book, joke pocket book, language
+          treasure book, second language treasure book, third language treasure
+          book, fourth language treasure book, kids book, book on flowers,
+          second book on flowers, third book on flowers, fourth book on flowers,
+          fifth book on flowers, sixth book on flowers, book on billiard, second
+          book on billiard, third book on billiard, book, second book, third
+          book, fourth book, book on Willem Alexander and Maxima, magazine,
+          second magazine, booklet, fifth book, sixth book, seventh book, eights
+          book, ninth book, tenth book, eleventh book, twelfth book, thirteenth
+          book, fourteenth book, fifteenth book, sixteenth book, seventeenth
+          book, eighteenth book, nineteenth book, twentieth book, twenty first
+          book, twenty second book, twenty third book, twenty fourth book,
+          twenty fifth book, twenty sixth book, twenty seventh book, twenty
+          eights book, twenty ninth book, thirtieth book, thirty-first book,
+          thirty-second book, thirty-third book, thirty-fourth book,
+          thirty-fifth book, thirty-sixth book, thirty-seventh book,
+          thirty-eights book, thirty-ninth book, fortieth book, forty-first
+          book, forty-second book, forty-third book, forty-fourth book,
+          forty-fifth book, forty-sixth book, forty-seventh book, forty-eights
+          book, forty-ninth book, fiftieth book, fifty-first book, fifty-second
+          book, fifty-third book, fifty-fourth book, fifty-fifth book,
+          fifty-sixth book, fifty-seventh book, small lamp, flashlight, plug,
+          two candles, glass candle recipient, comb, sun glasses, reading
+          glasses, second pair of reading glasses, third pair of reading
+          glasses, fourth pair of reading glasses, fifth pair of reading
+          glasses, wallet, second wallet, keychain, whistle blower, second
+          keychain, key, pair of keys, second pair of keys, bunch of keys,
+          second bunch of keys, name tag, Beatrix tile, asian frame with birds,
+          painted portrait woman, painted portrait man, picture framed man,
+          picture of man, bunch of portrait photos small, two kids picture
+          framed, second two kids picture framed, picture of group of people
+          framed, second picture of group of people framed, chopsticks, pair of
+          coasters, ashtray with coins inside, second ashtray, cigar box, small
+          box, second small box, box, second box, third box, fourth box, fifth
+          box, bin, swiss knife, pocket knife, ball, second ball, third ball,
+          billiard cue chalk, trophy, second trophy, third trophy, fourth
+          trophy, fifth trophy, sixth trophy, seventh trophy, eights trophy,
+          ninth trophy, medal, second medal, card game set, game bag with dices,
+          portable telescope, binoculars, camera, second camera, camera bag,
+          second camera bag, box of negative film, second box of negative film,
+          rolled up film, camera flash, magnifying glass
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
